@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8"/>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="lb-icon"></div>
+    <div id="doorhanger">
+      <div id="new-button"></div>
+    
+      <!-- new-entry -->
+      <div class="new-entry-inputs">
+        <input id="name"></input>
+        <input id="address"></input>
+        <input id="username"></input>
+        <input id="password"></input>
+        <div id="generate"></div>
+        <input id="notes"></input>
+      </div>
+      
+      <!-- generate -->
+      <div class="generate-inputs">
+        <div id="prompt"></div>
+        <input id="answer"></input>
+        <img id="continue" src="./assets/continue-enabled.png">
+      </div>
+      
+      <!-- results -->
+      <div id="results" state="passphrase">
+        <div id="header"> <p><span id="passphrase-switch">Passphrase</span> | <span id="password-switch">Password</span></p></div>
+        <div id="generated-result"></div>
+        <div id="regenerate"></div>
+      </div>
+    
+    
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

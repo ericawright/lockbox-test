@@ -1,0 +1,175 @@
+body {
+  background-image: url("./assets/background.png");
+  background-repeat: no-repeat;
+  background-size: 1200; /* width, height is auto need to cut some off*/
+}
+
+#lb-icon {
+  height: 26px;
+  width: 26px;
+  position: absolute;
+  left: 1111px;
+  top: 40px;
+}
+
+#doorhanger {
+  height: 0;
+  width: 345px;
+  background-image: url("./assets/entrylist.png");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 61px;
+  left: 842px;
+  overflow: hidden;
+}
+
+#doorhanger[state=entrylist] #new-button {
+  position: absolute;
+  height: 29px;
+  width: 30px;
+  top: 29px;
+  left: 288px;
+}
+
+#doorhanger[open=open] {
+  height: 546px;
+}
+
+#doorhanger[state=new-entry] {
+  background-image: url("./assets/newentry.png");
+}
+
+#doorhanger[state=generate] {
+  background-image: url("./assets/prompt.png");
+}
+
+#doorhanger[state=results] {
+  background-image: url("./assets/pwgenerated.png");
+}
+
+#doorhanger:not([state=new-entry]) .new-entry-inputs *,
+#doorhanger:not([state=generate]) .generate-inputs *,
+#doorhanger:not([state=results]) #results *  {
+  display: none;
+}
+
+#doorhanger[state=new-entry] input {
+  position: absolute;
+  width: 272px;
+  height: 22px;
+  left: 31px;
+}
+
+#doorhanger[state=new-entry] #name {
+  top: 100px;
+}
+
+#doorhanger[state=new-entry] #address {
+  top: 173px;
+}
+
+#doorhanger[state=new-entry] #username {
+  top: 246px;
+}
+
+#doorhanger[state=new-entry] #password {
+  top: 319px;
+}
+
+#doorhanger[state=new-entry] #notes {
+  top: 392px;
+  height: 69px;
+}
+
+#doorhanger[state=new-entry] #generate {
+  position: absolute;
+  width: 124px;
+  height: 17px;
+  top: 297px;
+  left: 188px;
+}
+
+#doorhanger[state=generate] #answer {
+  position: absolute;
+  width: 256px;
+  height: 26px;
+  top: 216px;
+  left: 41px;
+}
+
+#doorhanger[state=generate] #prompt {
+  position: absolute;
+  width: 258px;
+  height: 40px;
+  top: 163px;
+  left: 41px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#doorhanger[state=generate] #continue {
+  opacity: 0;
+  position: absolute;
+  width: 160px;
+  height: 41px;
+  top: 294px;
+  left: 11px;
+  border-radius: 0 0 0 6px;
+}
+
+#doorhanger[state=results] #generated-result {
+  position: absolute;
+  top: 115px;
+  left: 31px;
+  width: 275px;
+  height: 25px;
+  background: transparent;
+  border: 1px black solid;
+}
+
+#doorhanger[state=results] #header {
+  position: absolute;
+  top: 65px;
+  height: 42px;
+  width: 277px;
+  left: 31px;
+  text-align: center;
+}
+
+#doorhanger[state=results] #header p {
+  margin: 11px;
+  cursor: default;
+}
+
+#doorhanger[state=results] #results[state=passphrase] #password-switch:hover,
+#doorhanger[state=results] #results[state=password] #passphrase-switch:hover {
+  color: purple !important;
+  cursor: pointer;
+}
+
+#doorhanger[state=results] #results[state=passphrase] #password-switch,
+#doorhanger[state=results] #results[state=password] #passphrase-switch {
+  color: blue;
+}
+
+#doorhanger[state=results] #regenerate {
+  width: 26px;
+  height: 26px;
+  border: red 1px solid;
+  position: absolute;
+  top: 115px;
+  left: 281px;
+}
+
+#doorhanger[state=results] #generated-result span {
+  color: red;
+}
+
+
+
+
+
+
+
+
+
