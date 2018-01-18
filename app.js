@@ -1,6 +1,8 @@
 let questions = [
   "What is the last name of your favorite 90's actress?",
-  "What was your favorite type of candy in the 5th grade?"
+  "What was your favorite type of candy in the 5th grade?",
+  "Some other question",
+  "And one more for kicks"
 ];
 let word_list = [
   'copper',
@@ -96,12 +98,19 @@ let word_list = [
   'again',
 ];
 
-let num_let_options = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+let num_let_options = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
 
-
+// Helper functions
 let wrapEachLetter = function(str){
   let result = str.split('').map((letter, i) => i % 2 ? ('<span>' + letter + '</span>') : letter).join('');
   return result;
+}
+
+let shuffleArray = function(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+     let j = Math.floor(Math.random() * (i + 1));
+     [array[i], array[j]] = [array[j], array[i]];
+   }
 }
 
 let runTest = function() {
@@ -120,6 +129,12 @@ let runTest = function() {
   let regenerate = document.getElementById('regenerate');
   let answer = '';
   let answer_input = document.getElementById('answer');
+  let change_q = document.getElementById('change-q');
+  let question_index = 0;
+  let go_back = document.getElementById('go-back');
+  let use_this = document.getElementById('use-this');
+  let final_password = '';
+  let password_input = document.getElementById('password');
   
   let toggleDoorHanger = function() {
     doorhanger.setAttribute('open', doorhanger.getAttribute('open') === 'open' ? 'closed' : 'open');
@@ -134,11 +149,12 @@ let runTest = function() {
   }
   
   let showPrompt = function() {
-    if (doorhanger.getAttribute('open') != 'open' || !doorhanger.getAttribute('state', 'new-entry')) {
+    if (doorhanger.getAttribute('open') != 'open') {
       return;
     }
     doorhanger.setAttribute('state', 'generate');
-    let question = questions[Math.floor(Math.random() * questions.length)];
+    shuffleArray(questions);
+    let question = questions[question_index];
     prompt.innerHTML = question;
   }
   
@@ -155,11 +171,8 @@ let runTest = function() {
   }
   
   let generateNewPhrase = function(answer) {
-    for (let i = word_list.length - 1; i > 0; i--) {
-       let j = Math.floor(Math.random() * (i + 1));
-       [word_list[i], word_list[j]] = [word_list[j], word_list[i]];
-   } 
-    return `${word_list[0]}-${word_list[1]}-${answer}-${word_list[2]}`;
+    shuffleArray(word_list);
+    return `${word_list[0]}-${word_list[1]}-<span>${answer}</span>-${word_list[2]}`;
   }
   
   let submitAnswer = function() {
@@ -187,6 +200,12 @@ let runTest = function() {
     }
   }
   
+  let newEntryFilled = function() {
+    final_password = result_input.innerText;
+    doorhanger.setAttribute('state', 'new-entry');
+    password_input.value = final_password;
+  }
+  
   answer_input.onkeyup = function() {
     if (answer_input.value != '') {
       document.getElementById('continue').style.opacity = 1;
@@ -205,6 +224,30 @@ let runTest = function() {
     }
   }
   
+  change_q.onclick = function() {
+    question_index++;
+    if (question_index >= questions.length) {
+      question_index = 0;
+    }
+    prompt.innerHTML = questions[question_index];
+  }
+
+  go_back.onclick = function() {
+    doorhanger.setAttribute('state', 'entrylist');
+  }
+  document.getElementById('eye').onclick = function(e) {
+    if (password_input.getAttribute('type') == 'password') {
+      password_input.setAttribute('type', 'text');
+    } else {
+      password_input.setAttribute('type', 'password');
+    }
+  }
+  
+  document.getElementById('save-entry').onclick = function(){
+    doorhanger.setAttribute('state', 'confirmation');
+  }
+  
+  use_this.onclick = newEntryFilled;
   password_switch.onclick = resultToggle;
   passphrase_switch.onclick = resultToggle;
   continue_button.onclick = submitAnswer;

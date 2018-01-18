@@ -2,6 +2,8 @@ body {
   background-image: url("./assets/background.png");
   background-repeat: no-repeat;
   background-size: 1200; /* width, height is auto need to cut some off*/
+  font: caption;
+  font-size: 13px;
 }
 
 #lb-icon {
@@ -10,6 +12,7 @@ body {
   position: absolute;
   left: 1111px;
   top: 40px;
+  cursor: pointer;
 }
 
 #doorhanger {
@@ -25,10 +28,11 @@ body {
 
 #doorhanger[state=entrylist] #new-button {
   position: absolute;
-  height: 29px;
-  width: 30px;
+  height: 31px;
+  width: 31px;
   top: 29px;
   left: 288px;
+  cursor: pointer;
 }
 
 #doorhanger[open=open] {
@@ -47,9 +51,14 @@ body {
   background-image: url("./assets/pwgenerated.png");
 }
 
+#doorhanger[state=confirmation] {
+  background-image: url("./assets/confirmation.png");
+}
+
 #doorhanger:not([state=new-entry]) .new-entry-inputs *,
 #doorhanger:not([state=generate]) .generate-inputs *,
-#doorhanger:not([state=results]) #results *  {
+#doorhanger:not([state=results]) #results *,
+#doorhanger:not([state=confirmation]) .confirmation * {
   display: none;
 }
 
@@ -58,6 +67,23 @@ body {
   width: 272px;
   height: 22px;
   left: 31px;
+}
+
+#doorhanger[state=new-entry] #go-back {
+  /* border: 1px solid red; */
+  width: 37px;
+  height: 37px;
+  position: absolute;
+  top: 18px;
+  left: 11px;
+  cursor: pointer;
+}
+
+#doorhanger[state=new-entry] #eye {
+  position: absolute;
+  left: 287px;
+  top: 328px;
+  cursor: pointer;
 }
 
 #doorhanger[state=new-entry] #name {
@@ -87,6 +113,26 @@ body {
   height: 17px;
   top: 297px;
   left: 188px;
+  cursor: pointer;
+}
+
+#doorhanger[state=new-entry] #save-entry {
+  position: absolute;
+  top: 488px;
+  width: 158px;
+  height: 40px;
+  left: 11px;
+  cursor: pointer;
+}
+
+#doorhanger[state=generate] #change-q {
+  /* border: red 1px solid; */
+  width: 182px;
+  height: 23px;
+  position: absolute;
+  top: 254px;
+  left: 79px;
+  cursor: pointer;
 }
 
 #doorhanger[state=generate] #answer {
@@ -104,7 +150,7 @@ body {
   top: 163px;
   left: 41px;
   text-align: center;
-  font-family: sans-serif;
+  color: #171718;
 }
 
 #doorhanger[state=generate] #continue {
@@ -121,10 +167,15 @@ body {
   position: absolute;
   top: 115px;
   left: 31px;
-  width: 275px;
-  height: 25px;
+  width: 244px;
+  height: 27px;
   background: transparent;
-  border: 1px black solid;
+  border: 1px #AAAAAC solid;
+  line-height: 25px;
+  font-size: 18px;
+  padding-left: 5px;
+  color: #38383D;
+  padding-right: 28px;
 }
 
 #doorhanger[state=results] #header {
@@ -134,11 +185,13 @@ body {
   width: 277px;
   left: 31px;
   text-align: center;
+  color: #6D6D71;
 }
 
 #doorhanger[state=results] #header p {
   margin: 11px;
   cursor: default;
+  font-size: 20px;
 }
 
 #doorhanger[state=results] #results[state=passphrase] #password-switch:hover,
@@ -149,20 +202,55 @@ body {
 
 #doorhanger[state=results] #results[state=passphrase] #password-switch,
 #doorhanger[state=results] #results[state=password] #passphrase-switch {
-  color: blue;
+  color: #1D64D7;
+}
+
+#doorhanger[state=results] #results #password-switch,
+#doorhanger[state=results] #results #passphrase-switch {
+  font-size: 13px;
 }
 
 #doorhanger[state=results] #regenerate {
   width: 26px;
   height: 26px;
-  border: red 1px solid;
   position: absolute;
   top: 115px;
   left: 281px;
 }
 
 #doorhanger[state=results] #generated-result span {
-  color: red;
+  color: #A7267C;
+}
+
+#doorhanger[state=results] #results #use-this {
+  /* border: red 1px solid; */
+  cursor: pointer;
+  position: absolute;
+  width: 318px;
+  height: 41px;
+  top: 231px;
+  left: 11px;
+}
+
+#doorhanger[state=confirmation] .confirmation #confirmation-message {
+  position: absolute;
+  width: 319px;
+  height: 34px;
+  /* border: red 1px solid; */
+  top: 121px;
+  left: 10px;
+  text-align: center;
+  font-size: 19px;
+  color: #6D6D71;
+}
+
+#doorhanger[state=confirmation] .confirmation #dismiss {
+  position: absolute;
+  width: 160px;
+  height: 41px;
+  /* border: red 1px solid; */
+  top: 179px;
+  left: 10px;
 }
 
 
