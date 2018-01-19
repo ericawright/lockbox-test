@@ -209,8 +209,8 @@ body {
   cursor: pointer;
 }
 
-#doorhanger[state=results] #results[state=passphrase] #password-switch,
-#doorhanger[state=results] #results[state=password] #passphrase-switch {
+#doorhanger[state=results][type=passphrase] #password-switch,
+#doorhanger[state=results][type=password] #passphrase-switch {
   color: #1D64D7;
 }
 
@@ -272,8 +272,3 @@ body {
   left: 10px;
   cursor: pointer;
 }
-
-
-
-
-

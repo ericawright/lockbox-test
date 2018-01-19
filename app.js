@@ -8,6 +8,8 @@ let word_list = [
   'copper',
   'explain',
   'ill',
+  'talk',
+  'go',
   'truck',
   'neat',
   'unite',
@@ -135,19 +137,20 @@ let runTest = function() {
   let use_this = document.getElementById('use-this');
   let final_password = '';
   let password_input = document.getElementById('password');
-  
+  let dismiss = document.getElementById('dismiss');
+
   let toggleDoorHanger = function() {
     doorhanger.setAttribute('open', doorhanger.getAttribute('open') === 'open' ? 'closed' : 'open');
     doorhanger.setAttribute('state', 'entrylist');
   }
-  
+
   let createnewEntry = function() {
     if (doorhanger.getAttribute('open') != 'open' || !doorhanger.getAttribute('state', 'entrylist')) {
       return;
     }
     doorhanger.setAttribute('state', 'new-entry');
   }
-  
+
   let showPrompt = function() {
     if (doorhanger.getAttribute('open') != 'open') {
       return;
@@ -157,7 +160,7 @@ let runTest = function() {
     let question = questions[question_index];
     prompt.innerHTML = question;
   }
-  
+
   let generateNewPassword = function(answer) {
     let result = '';
     for(var i = 0; i < answer.length * 2; i++) {
@@ -169,12 +172,15 @@ let runTest = function() {
     }
     return wrapEachLetter(result);
   }
-  
+
   let generateNewPhrase = function(answer) {
     shuffleArray(word_list);
-    return `${word_list[0]}-${word_list[1]}-<span>${answer}</span>-${word_list[2]}`;
+    let temp_word_list = [word_list[0], word_list[1], word_list[2], `<span>${answer}</span>`]
+    shuffleArray(temp_word_list)
+
+    return `${temp_word_list[0]}-${temp_word_list[1]}-${temp_word_list[2]}-${temp_word_list[3]}`;
   }
-  
+
   let submitAnswer = function() {
     answer = answer_input.value;
     if (doorhanger.getAttribute('open') != 'open'
@@ -182,15 +188,15 @@ let runTest = function() {
     || answer == '') {
       return;
     }
-    
+
     password_result = generateNewPassword(answer);
     phrase_result = generateNewPhrase(answer);
-    
+
     doorhanger.setAttribute('state', 'results');
     doorhanger.setAttribute('type', 'passphrase');
     result_input.innerHTML = phrase_result;
   }
-  
+
   let resultToggle = function(e) {
     if (e.target == password_switch) {
       result_input.innerHTML = password_result;
@@ -200,7 +206,7 @@ let runTest = function() {
       doorhanger.setAttribute('type', 'passphrase');
     }
   }
-  
+
   document.getElementById('options').onclick = function() {
     if (doorhanger.getAttribute('options') == 'true') {
       doorhanger.removeAttribute('options');
@@ -208,13 +214,13 @@ let runTest = function() {
       doorhanger.setAttribute('options', 'true');
     }
   }
-  
+
   let newEntryFilled = function() {
     final_password = result_input.innerText;
     doorhanger.setAttribute('state', 'new-entry');
     password_input.value = final_password;
   }
-  
+
   answer_input.onkeyup = function() {
     if (answer_input.value != '') {
       document.getElementById('continue').style.opacity = 1;
@@ -224,7 +230,7 @@ let runTest = function() {
   }
 
   regenerate.onclick = function() {
-    if (results_wrapper.getAttribute('state') == 'password') {
+    if (doorhanger.getAttribute('type') == 'password') {
       password_result = generateNewPassword(answer);
       result_input.innerHTML = password_result;
     } else {
@@ -232,7 +238,7 @@ let runTest = function() {
       result_input.innerHTML = phrase_result;
     }
   }
-  
+
   change_q.onclick = function() {
     question_index++;
     if (question_index >= questions.length) {
@@ -244,6 +250,7 @@ let runTest = function() {
   go_back.onclick = function() {
     doorhanger.setAttribute('state', 'entrylist');
   }
+
   document.getElementById('eye').onclick = function(e) {
     if (password_input.getAttribute('type') == 'password') {
       password_input.setAttribute('type', 'text');
@@ -251,19 +258,24 @@ let runTest = function() {
       password_input.setAttribute('type', 'password');
     }
   }
-  
+
   document.getElementById('save-entry').onclick = function(){
     doorhanger.setAttribute('state', 'confirmation');
   }
-  
+
+  // result_input.oninput = function() {
+  //   answer =
+  //   range.insertNode(element);
+  // }
+
+  dismiss.onclick = toggleDoorHanger;
   use_this.onclick = newEntryFilled;
   password_switch.onclick = resultToggle;
   passphrase_switch.onclick = resultToggle;
   continue_button.onclick = submitAnswer;
   generate.onclick = showPrompt;
   new_button.onclick = createnewEntry;
-  lb_icon.onclick = toggleDoorHanger; 
+  lb_icon.onclick = toggleDoorHanger;
 }
-
 
 document.addEventListener('DOMContentLoaded', runTest, false);
