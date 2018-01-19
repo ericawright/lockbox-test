@@ -187,16 +187,25 @@ let runTest = function() {
     phrase_result = generateNewPhrase(answer);
     
     doorhanger.setAttribute('state', 'results');
+    doorhanger.setAttribute('type', 'passphrase');
     result_input.innerHTML = phrase_result;
   }
   
   let resultToggle = function(e) {
     if (e.target == password_switch) {
       result_input.innerHTML = password_result;
-      results_wrapper.setAttribute('state', 'password');
+      doorhanger.setAttribute('type', 'password');
     } else {
       result_input.innerHTML = phrase_result;
-      results_wrapper.setAttribute('state', 'passphrase');
+      doorhanger.setAttribute('type', 'passphrase');
+    }
+  }
+  
+  document.getElementById('options').onclick = function() {
+    if (doorhanger.getAttribute('options') == 'true') {
+      doorhanger.removeAttribute('options');
+    } else {
+      doorhanger.setAttribute('options', 'true');
     }
   }
   
