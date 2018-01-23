@@ -331,7 +331,12 @@ let runTest = function() {
 
   let generateNewPhrase = function(answer) {
     shuffleArray(word_list);
-    let temp_word_list = [word_list[0], word_list[1], word_list[2], `<span>${answer}</span>`]
+    let result = '';
+    for (let i = 0; i < answer.length; i++) {
+      result += '<span>' + answer[i] + '</span>';
+    }
+
+    let temp_word_list = [word_list[0], word_list[1], word_list[2], result]
     shuffleArray(temp_word_list)
 
     return `${temp_word_list[0]}-${temp_word_list[1]}-${temp_word_list[2]}-${temp_word_list[3]}`;

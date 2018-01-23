@@ -44,6 +44,10 @@ body[open=open] #lb-icon {
   text-align: center;
   background-color: #5AA1F8;
   border-radius: 3px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger[state=entrylist] #new-button:hover {
@@ -52,6 +56,10 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=entrylist] #new-button img {
   vertical-align: -63%;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger:not([state=entrylist]) #new-button {
@@ -234,7 +242,10 @@ body[open=open] #lb-icon {
   left: 41px;
   text-align: center;
   color: #171718;
+  user-select: none;
   -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger[state=generate] #continue {
@@ -296,7 +307,10 @@ body[open=open] #lb-icon {
   margin: 11px;
   cursor: default;
   font-size: 20px;
+  user-select: none;
   -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger[state=results][type=passphrase] #results #password-switch:hover,
@@ -362,7 +376,10 @@ body[open=open] #lb-icon {
   text-align: center;
   font-size: 19px;
   color: #6D6D71;
+  user-select: none;
   -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger[state=confirmation] .confirmation #dismiss {
