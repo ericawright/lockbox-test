@@ -4,22 +4,24 @@
     <meta charset="utf8"/>
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body state="closed">
     <div id="lb-icon"></div>
     <div id="doorhanger">
       <div id="new-button"></div>
+      <div id="go-back">
+        <img src="./assets/arrowhead-left-16.svg"/>
+      </div>
 
       <!-- new-entry -->
       <div class="new-entry-inputs">
-        <div id="go-back"></div>
         <input id="name"></input>
         <input id="address"></input>
         <input id="username"></input>
         <input type="password" id="password"></input>
         <img id="eye" src="./assets/eye.svg">
         <div id="generate"></div>
-        <input id="notes"></input>
-        <div id="save-entry"></div>
+        <textarea id="notes" cols="40" rows="5"></textarea>
+        <div id="save-entry">Save Entry</div>
       </div>
 
       <!-- generate -->
@@ -32,9 +34,11 @@
 
       <!-- results -->
       <div id="results">
-        <div id="header"> <p><span id="passphrase-switch">Passphrase</span> | <span id="password-switch">Password</span></p></div>
+        <div id="header"> <p><span id="passphrase-switch">Words</span> | <span id="password-switch">Characters</span></p></div>
         <div id="generated-result" contenteditable="true"></div>
-        <div id="regenerate"></div>
+        <div id="regenerate">
+          <img src="./assets/refresh-16.svg">
+        </div>
         <div id="options"></div>
         <div id="use-this"></div>
       </div>
