@@ -23,7 +23,6 @@ let word_list = [
   'educate',
   'ten',
   'hum',
-  'decisive',
   'notice',
   'stitch',
   'laugh',
@@ -104,16 +103,133 @@ let word_list = [
   'lose',
   'break',
   'again',
+  'war',
+  'boo',
+  'own',
+  'plant',
+  'star',
+  'lie',
+  'hop',
+  'food',
+  'fowl',
+  'big',
+  'pat',
+  'hair',
+  'alert',
+  'reply',
+  'steel',
+  'trick',
+  'nifty',
+  'mist',
+  'leg',
+  'jog',
+  'talk',
+  'knee',
+  'trip',
+  'rob',
+  'dare',
+  'last',
+  'use',
+  'title',
+  'mug',
+  'false',
+  'coat',
+  'toy',
+  'tan',
+  'strap',
+  'mark',
+  'wait',
+  'spot',
+  'word',
+  'hook',
+  'wash',
+  'chin',
+  'fold',
+  'alike',
+  'drab',
+  'pass',
+  'maid',
+  'air',
+  'clean',
+  'scarf',
+  'time',
+  'free',
+  'calm',
+  'float',
+  'sore',
+  'zoom',
+  'bolt',
+  'hot',
+  'saw',
+  'flat',
+  'thank',
+  'rule',
+  'egg',
+  'utter',
+  'price',
+  'water',
+  'trade',
+  'tip',
+  'yam',
+  'yak',
+  'rate',
+  'carve',
+  'bit',
+  'miss',
+  'bang',
+  'guess',
+  'thaw',
+  'look',
+  'dry',
+  'crown',
+  'boil',
+  'aunt',
+  'little',
+  'last',
+  'peel',
+  'smart',
+  'card',
+  'steer',
+  'known',
+  'honey',
+  'wine',
+  'third',
+  'sail',
+  'low',
+  'dog',
+  'cat',
+  'vest',
+  'belong',
+  'long',
+  'debt',
+  'drum',
+  'ajar',
+  'kiss',
+  'far',
+  'form',
+  'dad',
+  'mom',
+  'join',
+  'plant',
+  'quilt',
+  'quit',
+  'flow',
+  'base',
+  'run',
+  'care',
+  'ink',
+  'side',
+  'ocean',
+  'elite',
+  'whip',
+  'quartz',
+  'spare',
+  'fair'
 ];
 
-let num_let_options = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+let all_options = ["0123456789", "!@#$%^&*()", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"];
 
 // Helper functions
-let wrapEachLetter = function(str){
-  let result = str.split('').map((letter, i) => i % 2 ? ('<span>' + letter + '</span>') : letter).join('');
-  return result;
-}
-
 let shuffleArray = function(array) {
   for (let i = array.length - 1; i > 0; i--) {
      let j = Math.floor(Math.random() * (i + 1));
@@ -184,18 +300,33 @@ let runTest = function() {
     shuffleArray(questions);
     let question = questions[question_index].text;
     prompt.innerHTML = question;
+    answer_input.placeholder = questions[question_index].hint;
   }
 
   let generateNewPassword = function(answer) {
     let result = '';
-    for(var i = 0; i < answer.length * 2; i++) {
-      if (i % 2 == 0) {
-        result += num_let_options.charAt(Math.floor(Math.random() * num_let_options.length));
+    let temp_result = '';
+
+    let selection_length = answer.length >= 4? answer.length : (8 - answer.length);
+    for (let i = 0; i < selection_length; i++) {
+      if (i < 3) {
+        temp_result += all_options[i].charAt(Math.floor(Math.random() * all_options[i].length));
       } else {
-        result += answer[Math.floor(i/2)];
+        let random_selection = Math.floor(Math.random() * 4);
+        temp_result += all_options[random_selection].charAt(Math.floor(Math.random() * all_options[random_selection].length));
       }
     }
-    return wrapEachLetter(result);
+    // split just to use shuffleArray
+    temp_result = temp_result.split('');
+    shuffleArray(temp_result);
+    temp_result = temp_result.join('');
+
+    for(var i = 0; i < answer.length; i++) {
+      result += temp_result[i] + '<span>' + answer[i] + '</span>';
+    }
+    result += temp_result.substr(answer.length);
+
+    return result;
   }
 
   let generateNewPhrase = function(answer) {
@@ -213,6 +344,7 @@ let runTest = function() {
     || answer == '') {
       return;
     }
+    answer = answer.replace(/\s/g, '');
 
     password_result = generateNewPassword(answer);
     phrase_result = generateNewPhrase(answer);
@@ -262,9 +394,11 @@ let runTest = function() {
     if (doorhanger.getAttribute('type') == 'password') {
       password_result = generateNewPassword(answer);
       result_input.innerHTML = password_result;
+      result_input.removeAttribute('edited');
     } else {
       phrase_result = generateNewPhrase(answer);
       result_input.innerHTML = phrase_result;
+      result_input.removeAttribute('edited');
     }
   }
 
@@ -274,10 +408,11 @@ let runTest = function() {
       question_index = 0;
     }
     prompt.innerHTML = questions[question_index].text;
+    answer_input.placeholder = questions[question_index].hint;
   }
 
   go_back.onclick = function() {
-  if (doorhanger.getAttribute('state') == 'new-entry') {
+    if (doorhanger.getAttribute('state') == 'new-entry') {
       doorhanger.setAttribute('state', 'entrylist');
     } else if (doorhanger.getAttribute('state') == 'generate') {
       doorhanger.setAttribute('state', 'new-entry');

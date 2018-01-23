@@ -6,6 +6,10 @@ body {
   font-size: 13px;
 }
 
+body::-webkit-scrollbar {
+    width: .1em;
+}
+
 #lb-icon {
   height: 28px;
   width: 28px;
@@ -33,11 +37,21 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=entrylist] #new-button {
   position: absolute;
-  height: 31px;
-  width: 31px;
-  top: 29px;
-  left: 288px;
-  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  top: 30px;
+  left: 289px;
+  text-align: center;
+  background-color: #5AA1F8;
+  border-radius: 3px;
+}
+
+#doorhanger[state=entrylist] #new-button:hover {
+  background-color: transparent;
+}
+
+#doorhanger[state=entrylist] #new-button img {
+  vertical-align: -63%;
 }
 
 #doorhanger[open=open] {
@@ -52,8 +66,12 @@ body[open=open] #lb-icon {
   background-image: url("./assets/prompt.png");
 }
 
-#doorhanger[state=results] {
-  background-image: url("./assets/pwgenerated.png");
+#doorhanger[state=results][type=passphrase] {
+  background-image: url("./assets/phrase_generated.png");
+}
+
+#doorhanger[state=results][type=password] {
+  background-image: url("./assets/characters_generated.png");
 }
 
 #doorhanger[state=results][options=true][type=password] {
@@ -141,11 +159,22 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=new-entry] #generate {
   position: absolute;
-  width: 124px;
+  width: 126px;
   height: 17px;
-  top: 297px;
-  left: 188px;
-  cursor: pointer;
+  top: 298px;
+  left: 190px;
+  background-color: #EDEDF0;
+}
+
+#doorhanger[state=new-entry] #generate span {
+  color: #2667D8;
+  text-decoration: none;
+  letter-spacing: .2px;
+  cursor: default;
+}
+
+#doorhanger[state=new-entry] #generate span:hover {
+  color: #1B4A9B;
 }
 
 #doorhanger[state=new-entry] #save-entry {
@@ -166,13 +195,23 @@ body[open=open] #lb-icon {
 }
 
 #doorhanger[state=generate] #change-q {
-  /* border: red 1px solid; */
   width: 182px;
   height: 23px;
   position: absolute;
-  top: 254px;
-  left: 79px;
-  cursor: pointer;
+  top: 253px;
+  left: 83px;
+  line-height: 23px;
+  background-color: #F9F9FA;
+  cursor: default;
+}
+
+#doorhanger[state=generate] #change-q span {
+  color: #2667D8;
+  letter-spacing: .3px;
+}
+
+#doorhanger[state=generate] #change-q span:hover {
+  color: #1B4A9B;
 }
 
 #doorhanger[state=generate] #answer {
@@ -203,8 +242,7 @@ body[open=open] #lb-icon {
   left: 11px;
   border-radius: 0 0 0 6px;
 }
-
-#doorhanger[state=results] #generated-result {
+#doorhanger[state=results] #results-wrapper {
   position: absolute;
   top: 113px;
   left: 30px;
@@ -212,19 +250,30 @@ body[open=open] #lb-icon {
   height: 29px;
   background-color: #EDEDF0;
   border: 1px #AAAAAC solid;
-  line-height: 25px;
-  font-size: 18px;
   padding-left: 5px;
   color: #38383D;
   padding-right: 28px;
 }
-#doorhanger[state=results] #generated-result:hover {
-  background-color: white;
-}
 
+#doorhanger[state=results] #generated-result {
+  line-height: 25px;
+  font-size: 18px;
+  color: #38383D;
+  overflow-x: auto;
+  white-space: nowrap;
+}
 
 #doorhanger[state=results] #generated-result:active,
 #doorhanger[state=results] #generated-result:focus {
+  outline: none;
+}
+
+#doorhanger[state=results] #results-wrapper:hover {
+  background-color: white;
+}
+
+#doorhanger[state=results] #results-wrapper:active,
+#doorhanger[state=results] #results-wrapper:focus {
   background-color: white;
   outline: #F7F7F7 solid 1px;
 }
@@ -248,13 +297,12 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=results][type=passphrase] #results #password-switch:hover,
 #doorhanger[state=results][type=password] #results #passphrase-switch:hover {
-  color: purple !important;
-  cursor: pointer;
+  color: #1B4A9B;
 }
 
 #doorhanger[state=results][type=passphrase] #password-switch,
 #doorhanger[state=results][type=password] #passphrase-switch {
-  color: #1D64D7;
+  color: #2667D8;
 }
 
 #doorhanger[state=results] #results #password-switch,
@@ -282,7 +330,6 @@ body[open=open] #lb-icon {
   position: absolute;
   top: 192px;
   left: 155px;
-  /* border: red 1px solid; */
   cursor: pointer;
 }
 
@@ -292,17 +339,20 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=results] #results #use-this {
   position: absolute;
-  width: 319px;
+  width: 320px;
   height: 42px;
   top: 231px;
   left: 11px;
+}
+
+#doorhanger[state=results][options=true] #results #use-this {
+  top: 343px;
 }
 
 #doorhanger[state=confirmation] .confirmation #confirmation-message {
   position: absolute;
   width: 319px;
   height: 34px;
-  /* border: red 1px solid; */
   top: 121px;
   left: 10px;
   text-align: center;
@@ -317,5 +367,4 @@ body[open=open] #lb-icon {
   height: 42px;
   top: 179px;
   left: 10px;
-  cursor: pointer;
 }
