@@ -413,6 +413,7 @@ let runTest = function() {
       question_index = 0;
     }
     prompt.innerHTML = questions[question_index].text;
+    answer_input.value = '';
     answer_input.placeholder = questions[question_index].hint;
   }
 
