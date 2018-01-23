@@ -47,11 +47,15 @@ body[open=open] #lb-icon {
 }
 
 #doorhanger[state=entrylist] #new-button:hover {
-  background-color: transparent;
+  background-color: #2062D7;
 }
 
 #doorhanger[state=entrylist] #new-button img {
   vertical-align: -63%;
+}
+
+#doorhanger:not([state=entrylist]) #new-button {
+  display: none;
 }
 
 #doorhanger[open=open] {
