@@ -389,11 +389,14 @@ let runTest = function() {
     enableSave();
   }
 
-  answer_input.onkeyup = function() {
+  answer_input.onkeyup = function(e) {
     if (answer_input.value != '') {
       document.getElementById('continue').style.opacity = 1;
     } else {
       document.getElementById('continue').style.opacity = 0;
+    }
+    if (e.keyCode === 13) {
+      continue_button.onclick();
     }
   }
 
