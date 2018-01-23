@@ -232,9 +232,9 @@ let all_options = ["0123456789", "!@#$%^&*()", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ab
 // Helper functions
 let shuffleArray = function(array) {
   for (let i = array.length - 1; i > 0; i--) {
-     let j = Math.floor(Math.random() * (i + 1));
-     [array[i], array[j]] = [array[j], array[i]];
-   }
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
 let runTest = function() {
@@ -289,6 +289,7 @@ let runTest = function() {
       return;
     }
     doorhanger.setAttribute('state', 'new-entry');
+    password_input.setAttribute('type', 'password');
     enableSave();
   }
 
@@ -383,6 +384,7 @@ let runTest = function() {
   let newEntryFilled = function() {
     final_password = result_input.innerText;
     doorhanger.setAttribute('state', 'new-entry');
+    password_input.setAttribute('type', 'password');
     password_input.value = final_password;
     enableSave();
   }
@@ -422,6 +424,7 @@ let runTest = function() {
       doorhanger.setAttribute('state', 'entrylist');
     } else if (doorhanger.getAttribute('state') == 'generate') {
       doorhanger.setAttribute('state', 'new-entry');
+      password_input.setAttribute('type', 'password');
     } else if (doorhanger.getAttribute('state') == 'results') {
       doorhanger.setAttribute('state', 'generate');
     }

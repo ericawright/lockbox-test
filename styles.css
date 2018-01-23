@@ -1,13 +1,16 @@
 body {
-  background-image: url("./assets/background.png");
-  background-repeat: no-repeat;
-  background-size: 1200; /* width, height is auto need to cut some off*/
+  margin: 0;
   font: caption;
   font-size: 13px;
 }
 
-body::-webkit-scrollbar {
-    width: .1em;
+#outer-wrapper {
+  width: 1200px;
+  height: 900px;
+  margin: 10px auto;
+  position: relative;
+  background-image: url("./assets/background.png");
+  background-repeat: no-repeat;
 }
 
 #lb-icon {
@@ -26,13 +29,15 @@ body[open=open] #lb-icon {
 
 #doorhanger {
   height: 0;
+  opacity: 0;
   width: 345px;
   background-image: url("./assets/entrylist.png");
   background-repeat: no-repeat;
   position: absolute;
-  top: 55px;
+  top: 51px;
   left: 843px;
   overflow: hidden;
+  transition: transform 150ms cubic-bezier(.07, .95, 0, 1), opacity 150ms cubic-bezier(.07, .95, 0, 1);
 }
 
 #doorhanger[state=entrylist] #new-button {
@@ -68,6 +73,8 @@ body[open=open] #lb-icon {
 
 #doorhanger[open=open] {
   height: 546px;
+  transform: translateY(5px);
+  opacity: 1;
 }
 
 #doorhanger[state=new-entry] {

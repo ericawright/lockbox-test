@@ -5,57 +5,59 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body state="closed">
-    <div id="lb-icon"></div>
-    <div id="doorhanger">
-      <div id="new-button">
-        <img src="./assets/new-16.svg"/>
-      </div>
-      <div id="go-back">
-        <img src="./assets/arrowhead-left-16.svg"/>
-      </div>
 
-      <!-- new-entry -->
-      <div class="new-entry-inputs">
-        <input id="name"></input>
-        <input id="address"></input>
-        <input id="username"></input>
-        <input type="password" id="password"></input>
-        <img id="eye" src="./assets/eye.svg">
-        <div id="generate">
-          <span>Generate Password</span>
+    <div id="outer-wrapper">
+      <div id="lb-icon"></div>
+      <div id="doorhanger">
+        <div id="new-button">
+          <img src="./assets/new-16.svg"/>
         </div>
-        <textarea id="notes" cols="40" rows="5"></textarea>
-        <div id="save-entry">Save Entry</div>
-      </div>
-
-      <!-- generate -->
-      <div class="generate-inputs">
-        <div id="prompt"></div>
-        <input id="answer"></input>
-        <div id="change-q">
-          <span>Answer a different question</span>
+        <div id="go-back">
+          <img src="./assets/arrowhead-left-16.svg"/>
         </div>
-        <img id="continue" src="./assets/continue-enabled.png">
-      </div>
 
-      <!-- results -->
-      <div id="results">
-        <div id="header"> <p><span id="passphrase-switch">Words</span> | <span id="password-switch">Characters</span></p></div>
-        <div id="results-wrapper">
-          <div id="generated-result" contenteditable="true"></div>
+        <!-- new-entry -->
+        <div class="new-entry-inputs">
+          <input id="name"></input>
+          <input id="address"></input>
+          <input id="username"></input>
+          <input type="password" id="password"></input>
+          <img id="eye" src="./assets/eye.svg">
+          <div id="generate">
+            <span>Generate Password</span>
+          </div>
+          <textarea id="notes" cols="40" rows="5"></textarea>
+          <div id="save-entry">Save Entry</div>
         </div>
-        <div id="regenerate">
-          <img src="./assets/refresh-16.svg">
+
+        <!-- generate -->
+        <div class="generate-inputs">
+          <div id="prompt"></div>
+          <input id="answer"></input>
+          <div id="change-q">
+            <span>Answer a different question</span>
+          </div>
+          <img id="continue" src="./assets/continue-enabled.png">
         </div>
-        <div id="options"></div>
-        <div id="use-this"></div>
-      </div>
 
-      <div class="confirmation">
-        <div id="confirmation-message">Entry Created for Intuit</div>
-        <div id="dismiss"></div>
-      </div>
+        <!-- results -->
+        <div id="results">
+          <div id="header"> <p><span id="passphrase-switch">Words</span> | <span id="password-switch">Characters</span></p></div>
+          <div id="results-wrapper">
+            <div id="generated-result" contenteditable="true"></div>
+          </div>
+          <div id="regenerate">
+            <img src="./assets/refresh-16.svg">
+          </div>
+          <div id="options"></div>
+          <div id="use-this"></div>
+        </div>
 
+        <div class="confirmation">
+          <div id="confirmation-message">Entry Created for Intuit</div>
+          <div id="dismiss"></div>
+        </div>
+      </div>
 
     </div>
     <script src="app.js"></script>
