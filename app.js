@@ -442,7 +442,7 @@ let runTest = function() {
   }
 
   document.getElementById('save-entry').onclick = function(e) {
-    if (e.target.style.opacity == 1) {
+    if (!e.target.classList.contains('enabled')) {
       return;
     }
     doorhanger.setAttribute('state', 'confirmation');
@@ -457,9 +457,9 @@ let runTest = function() {
         || address_input.value != ''
         || username_input.value != ''
         || password_input.value != '') {
-      document.getElementById('save-entry').style.opacity = '0';
+      document.getElementById('save-entry').classList.add('enabled');
     } else {
-      document.getElementById('save-entry').style.opacity = '1';
+      document.getElementById('save-entry').classList.remove('enabled');
     }
   }
 

@@ -114,7 +114,7 @@ body[open=open] #lb-icon {
 #doorhanger[state=new-entry] input {
   position: absolute;
   width: 276px;
-  height: 25px;
+  height: 27px;
   left: 31px;
 }
 
@@ -149,6 +149,10 @@ body[open=open] #lb-icon {
   left: 287px;
   top: 328px;
   cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger[state=new-entry] #name {
@@ -190,6 +194,10 @@ body[open=open] #lb-icon {
   text-decoration: none;
   letter-spacing: .2px;
   cursor: default;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger[state=new-entry] #generate span:hover {
@@ -202,8 +210,8 @@ body[open=open] #lb-icon {
   width: 160px;
   height: 41px;
   left: 11px;
-  background-color: #5AA1F8;
-  border-radius: 0 0 0 5px;
+  background-color: #95BBEF;;
+  border-radius: 0 0 0 6px;
   color: white;
   text-align: center;
   line-height: 41px;
@@ -211,7 +219,27 @@ body[open=open] #lb-icon {
   font-weight: 100;
   letter-spacing: .4px;
   cursor: default;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
+#doorhanger[state=new-entry] #save-entry.enabled,
+#dismiss {
+  background-color: #0060df;
+}
+
+#doorhanger[state=new-entry] #save-entry.enabled:hover,
+#dismiss:hover {
+  background-color: #003EAA;
+}
+
+#doorhanger[state=new-entry] #save-entry.enabled:active,
+#dismiss:active {
+  background-color: #002275;
+}
+
+
 
 #doorhanger[state=generate] #change-q {
   width: 182px;
@@ -395,4 +423,5 @@ body[open=open] #lb-icon {
   height: 42px;
   top: 179px;
   left: 10px;
+  border-radius: 0 0 0 6px;
 }
