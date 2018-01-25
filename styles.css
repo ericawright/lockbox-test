@@ -339,11 +339,11 @@ body[open=open] #lb-icon {
   width: 277px;
   left: 31px;
   text-align: center;
-  color: #6D6D71;
+  color: #545459;
 }
 
 #doorhanger[state=results] #header p {
-  margin: 11px;
+  margin: 4px;
   cursor: default;
   font-size: 20px;
   user-select: none;
