@@ -366,10 +366,12 @@ let runTest = function() {
       result_input.innerHTML = password_result;
       doorhanger.setAttribute('type', 'password');
       result_input.removeAttribute('edited');
+      use_this.classList.add('enabled');
     } else {
       result_input.innerHTML = phrase_result;
       doorhanger.setAttribute('type', 'passphrase');
       result_input.removeAttribute('edited');
+      use_this.classList.add('enabled');
     }
   }
 
@@ -382,6 +384,9 @@ let runTest = function() {
   }
 
   let newEntryFilled = function() {
+    if (!use_this.classList.contains('enabled')) {
+      return;
+    }
     final_password = result_input.innerText;
     doorhanger.setAttribute('state', 'new-entry');
     password_input.setAttribute('type', 'password');
@@ -391,9 +396,9 @@ let runTest = function() {
 
   answer_input.onkeyup = function(e) {
     if (answer_input.value != '') {
-      document.getElementById('continue').style.opacity = 1;
+      document.getElementById('continue').classList.add('enabled');
     } else {
-      document.getElementById('continue').style.opacity = 0;
+      document.getElementById('continue').classList.remove('enabled');
     }
     if (e.keyCode === 13) {
       continue_button.onclick();
@@ -419,6 +424,7 @@ let runTest = function() {
     }
     prompt.innerHTML = questions[question_index].text;
     answer_input.value = '';
+    continue_button.classList.remove('enabled');
     answer_input.placeholder = questions[question_index].hint;
   }
 
@@ -450,6 +456,11 @@ let runTest = function() {
 
   result_input.oninput = function() {
     result_input.setAttribute('edited', 'true');
+    if (result_input.innerText.trim() === '') {
+      use_this.classList.remove('enabled');
+    } else {
+      use_this.classList.add('enabled');
+    }
   }
 
   let enableSave = function() {

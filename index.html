@@ -37,20 +37,24 @@
           <div id="change-q">
             <span>Answer a different question</span>
           </div>
-          <img id="continue" src="./assets/continue-enabled.png">
+          <div id="continue">
+            <span>Continue</span>
+          </div>
         </div>
 
         <!-- results -->
         <div id="results">
           <div id="header"> <p><span id="passphrase-switch">Words</span> | <span id="password-switch">Characters</span></p></div>
           <div id="results-wrapper">
-            <div id="generated-result" contenteditable="true"></div>
+            <div id="generated-result" contenteditable="true" spellcheck="false"></div>
           </div>
           <div id="regenerate">
             <img src="./assets/refresh-16.svg">
           </div>
           <div id="options"></div>
-          <div id="use-this"></div>
+          <div id="use-this" class="enabled">
+            <span>Use This Password</span>
+          </div>
         </div>
 
         <div class="confirmation">

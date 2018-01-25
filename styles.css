@@ -2,6 +2,9 @@ body {
   margin: 0;
   font: caption;
   font-size: 13px;
+  background-image: url('./assets/desktopbg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 input,
@@ -54,16 +57,11 @@ body[open=open] #lb-icon {
   top: 30px;
   left: 289px;
   text-align: center;
-  background-color: #5AA1F8;
   border-radius: 3px;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-}
-
-#doorhanger[state=entrylist] #new-button:hover {
-  background-color: #2062D7;
 }
 
 #doorhanger[state=entrylist] #new-button img {
@@ -127,6 +125,10 @@ body[open=open] #lb-icon {
 
 #go-back {
   display: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger[state=new-entry] #go-back,
@@ -218,7 +220,7 @@ body[open=open] #lb-icon {
   width: 160px;
   height: 41px;
   left: 11px;
-  background-color: #95BBEF;;
+  background-color: #95BBEF;
   border-radius: 0 0 0 6px;
   color: white;
   text-align: center;
@@ -233,21 +235,28 @@ body[open=open] #lb-icon {
   -ms-user-select: none;
 }
 #doorhanger[state=new-entry] #save-entry.enabled,
-#dismiss {
+#dismiss,
+#new-button,
+#doorhanger[state=generate] #continue.enabled,
+#doorhanger[state=results] #results #use-this.enabled {
   background-color: #0060df;
 }
 
 #doorhanger[state=new-entry] #save-entry.enabled:hover,
-#dismiss:hover {
+#dismiss:hover,
+#new-button:hover,
+#doorhanger[state=generate] #continue.enabled:hover,
+#doorhanger[state=results] #results #use-this.enabled:hover {
   background-color: #003EAA;
 }
 
 #doorhanger[state=new-entry] #save-entry.enabled:active,
-#dismiss:active {
+#dismiss:active,
+#new-button:active,
+#doorhanger[state=generate] #continue.enabled:active,
+#doorhanger[state=results] #results #use-this.enabled:active {
   background-color: #002275;
 }
-
-
 
 #doorhanger[state=generate] #change-q {
   width: 182px;
@@ -258,6 +267,10 @@ body[open=open] #lb-icon {
   line-height: 23px;
   background-color: #F9F9FA;
   cursor: default;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger[state=generate] #change-q span {
@@ -292,14 +305,27 @@ body[open=open] #lb-icon {
 }
 
 #doorhanger[state=generate] #continue {
-  opacity: 0;
   position: absolute;
   width: 160px;
   height: 41px;
   top: 294px;
   left: 11px;
   border-radius: 0 0 0 6px;
+  color: #FFFFFF;
+  background-color: #95BBEF;
+  text-align: center;
 }
+
+#doorhanger[state=generate] #continue span {
+  display: block;
+  margin-top: 12px;
+  cursor: default;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 #doorhanger[state=results] #results-wrapper {
   position: absolute;
   top: 113px;
@@ -383,6 +409,10 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=results] #regenerate img {
   vertical-align: -10%;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger[state=results] #options {
@@ -404,6 +434,19 @@ body[open=open] #lb-icon {
   height: 42px;
   top: 231px;
   left: 11px;
+  border-radius: 0 0 6px 6px;
+  color: #FFFFFF;
+  text-align: center;
+  background-color: #95BBEF;
+}
+
+#doorhanger[state=results] #results #use-this span {
+  display: block;
+  margin-top: 13px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #doorhanger[state=results][options=true] #results #use-this {
