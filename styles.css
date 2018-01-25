@@ -16,11 +16,11 @@ textarea {
 
 #outer-wrapper {
   width: 1200px;
-  height: 900px;
-  margin: 10px auto;
+  margin: 10px auto 0 auto;
   position: relative;
   background-image: url("./assets/background.png");
   background-repeat: no-repeat;
+  height: calc(100vh - 10px);
 }
 
 #lb-icon {
@@ -343,7 +343,7 @@ body[open=open] #lb-icon {
   line-height: 25px;
   font-size: 18px;
   color: #38383D;
-  overflow-x: auto;
+  overflow-x: hidden;
   white-space: nowrap;
 }
 
