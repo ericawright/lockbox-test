@@ -207,7 +207,7 @@ body[open=open] #lb-icon {
 }
 
 #go-back img {
-  vertical-align: -41%;
+  margin-top: 4px;
 }
 
 #doorhanger[state=new-entry] #eye {
@@ -449,7 +449,7 @@ body[open=open] #lb-icon {
 }
 
 #doorhanger[state=results] #regenerate img {
-  vertical-align: -10%;
+  margin-top: 6px;
 }
 
 #doorhanger[state=results] #options {
