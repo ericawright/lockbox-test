@@ -4,6 +4,10 @@ body {
   font-size: 13px;
 }
 
+input {
+  padding-inline-start: 8px;
+}
+
 #outer-wrapper {
   width: 1200px;
   height: 900px;
@@ -60,7 +64,7 @@ body[open=open] #lb-icon {
 }
 
 #doorhanger[state=entrylist] #new-button img {
-  vertical-align: -63%;
+  margin-top: 7px;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -113,9 +117,9 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=new-entry] input {
   position: absolute;
-  width: 276px;
+  width: 267px;
   height: 27px;
-  left: 31px;
+  left: 30px;
 }
 
 #go-back {
@@ -263,7 +267,7 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=generate] #answer {
   position: absolute;
-  width: 256px;
+  width: 248px;
   height: 26px;
   top: 216px;
   left: 41px;
@@ -296,11 +300,11 @@ body[open=open] #lb-icon {
   position: absolute;
   top: 113px;
   left: 30px;
-  width: 246px;
+  width: 243px;
   height: 29px;
   background-color: #EDEDF0;
   border: 1px #AAAAAC solid;
-  padding-left: 5px;
+  padding-left: 8px;
   color: #38383D;
   padding-right: 28px;
 }
@@ -424,4 +428,11 @@ body[open=open] #lb-icon {
   top: 179px;
   left: 10px;
   border-radius: 0 0 0 6px;
+  text-align: center;
+  color: #FFF;
+}
+
+#doorhanger[state=confirmation] .confirmation #dismiss span {
+  margin-top: 13px;
+  display: block;
 }
