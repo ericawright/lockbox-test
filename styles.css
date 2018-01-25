@@ -4,8 +4,11 @@ body {
   font-size: 13px;
 }
 
-input {
+input,
+textarea {
   padding-inline-start: 8px;
+  border: 1px #C8C8C8 solid;
+  border-radius: 2px;
 }
 
 #outer-wrapper {
@@ -117,7 +120,7 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=new-entry] input {
   position: absolute;
-  width: 267px;
+  width: 270px;
   height: 27px;
   left: 30px;
 }
@@ -177,11 +180,12 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=new-entry] #notes {
   position: absolute;
-  width: 276px;
+  width: 270px;
   left: 31px;
   top: 391px;
   height: 75px;
   resize: none;
+  padding-top: 2px
 }
 
 #doorhanger[state=new-entry] #generate {
@@ -267,8 +271,8 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=generate] #answer {
   position: absolute;
-  width: 248px;
-  height: 26px;
+  width: 250px;
+  height: 27px;
   top: 216px;
   left: 41px;
 }
