@@ -7,6 +7,14 @@ body {
   background-size: cover;
 }
 
+*:not(#generated-result),
+#generated-result :not(span) {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 input,
 textarea {
   padding-inline-start: 8px;
@@ -58,18 +66,10 @@ body[open=open] #lb-icon {
   left: 289px;
   text-align: center;
   border-radius: 3px;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger[state=entrylist] #new-button img {
   margin-top: 7px;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger:not([state=entrylist]) #new-button {
@@ -123,13 +123,70 @@ body[open=open] #lb-icon {
   left: 30px;
 }
 
-#go-back {
+#go-back,
+#title,
+#cancel {
   display: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
+
+#doorhanger[state=new-entry] #title,
+#doorhanger[state=generate] #title,
+#doorhanger[state=results] #title {
+  display: block;
+  position: absolute;
+  top: 30px;
+  left: 67px;
+  width: 60%;
+  text-align: center;
+  background-color: #F9F9FA;
+  color: #1C1C1C;
+  font-weight: bold;
+}
+
+#doorhanger[state=new-entry] #title::after {
+  content: "New Entry";
+}
+
+#doorhanger[state=generate] #title::after,
+#doorhanger[state=results] #title::after {
+  content: "Create Password";
+}
+
+#doorhanger[state=new-entry] #cancel,
+#doorhanger[state=generate] #cancel,
+#doorhanger[state=confirmation] #cancel {
+  display: block;
+  position: absolute;
+  left: 189px;
+  width: 125px;
+  text-align: center;
+  background-color: #E1E1E4;
+}
+
+#doorhanger[state=new-entry] #cancel::after {
+  content: "Cancel";
+}
+
+#doorhanger[state=new-entry] #cancel {
+  top: 502px;
+}
+
+#doorhanger[state=generate] #cancel::after {
+  content: "Skip this step";
+}
+
+#doorhanger[state=generate] #cancel {
+  top: 306px;
+}
+
+#doorhanger[state=confirmation] #cancel::after {
+  content: "Manage Entry";
+}
+
+#doorhanger[state=confirmation] #cancel {
+  top: 192px;
+}
+
 
 #doorhanger[state=new-entry] #go-back,
 #doorhanger[state=generate] #go-back,
@@ -158,10 +215,6 @@ body[open=open] #lb-icon {
   left: 287px;
   top: 328px;
   cursor: pointer;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger[state=new-entry] #name {
@@ -178,6 +231,8 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=new-entry] #password {
   top: 319px;
+  padding-inline-end: 28px;
+  width: 243px;
 }
 
 #doorhanger[state=new-entry] #notes {
@@ -204,10 +259,6 @@ body[open=open] #lb-icon {
   text-decoration: none;
   letter-spacing: .2px;
   cursor: default;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger[state=new-entry] #generate span:hover {
@@ -229,10 +280,6 @@ body[open=open] #lb-icon {
   font-weight: 100;
   letter-spacing: .4px;
   cursor: default;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 #doorhanger[state=new-entry] #save-entry.enabled,
 #dismiss,
@@ -267,10 +314,6 @@ body[open=open] #lb-icon {
   line-height: 23px;
   background-color: #F9F9FA;
   cursor: default;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger[state=generate] #change-q span {
@@ -290,6 +333,16 @@ body[open=open] #lb-icon {
   left: 41px;
 }
 
+#doorhanger[state=generate] #instructions {
+  background-color: #EDEDF0;
+  width: 284px;
+  position: absolute;
+  top: 74px;
+  left: 30px;
+  line-height: 1.5em;
+  letter-spacing: .2px;
+}
+
 #doorhanger[state=generate] #prompt {
   position: absolute;
   width: 258px;
@@ -298,10 +351,6 @@ body[open=open] #lb-icon {
   left: 41px;
   text-align: center;
   color: #171718;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger[state=generate] #continue {
@@ -320,10 +369,6 @@ body[open=open] #lb-icon {
   display: block;
   margin-top: 12px;
   cursor: default;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger[state=results] #results-wrapper {
@@ -376,10 +421,6 @@ body[open=open] #lb-icon {
   margin: 4px;
   cursor: default;
   font-size: 20px;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger[state=results][type=passphrase] #results #password-switch:hover,
@@ -409,10 +450,6 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=results] #regenerate img {
   vertical-align: -10%;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger[state=results] #options {
@@ -443,10 +480,6 @@ body[open=open] #lb-icon {
 #doorhanger[state=results] #results #use-this span {
   display: block;
   margin-top: 13px;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger[state=results][options=true] #results #use-this {
@@ -462,10 +495,6 @@ body[open=open] #lb-icon {
   text-align: center;
   font-size: 19px;
   color: #6D6D71;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 #doorhanger[state=confirmation] .confirmation #dismiss {
