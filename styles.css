@@ -180,7 +180,7 @@ body[open=open] #lb-icon {
 }
 
 #doorhanger[state=confirmation] #cancel::after {
-  content: "Manage Entry";
+  content: "Edit Entry";
 }
 
 #doorhanger[state=confirmation] #cancel {
