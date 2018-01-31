@@ -259,13 +259,6 @@ let runTest = function() {
   let use_this = document.getElementById('use-this');
   let final_password = '';
   let dismiss = document.getElementById('dismiss');
-  let password_input = document.getElementById('password');
-  let name_input = document.getElementById('name');
-  let address_input = document.getElementById('address');
-  let username_input = document.getElementById('username');
-  let notes_input = document.getElementById('notes');
-
-
 
   let toggleDoorHanger = function() {
     doorhanger.setAttribute('open', doorhanger.getAttribute('open') === 'open' ? 'closed' : 'open');
@@ -278,36 +271,9 @@ let runTest = function() {
     answer_input.placeholder = questions[question_index].hint;
 
     // reset everything incase they begin again
-    password_input.value = '';
-    name_input.value = '';
-    address_input.value = '';
-    username_input.value = '';
-    notes_input.value = '';
     answer_input.value = '';
-
-    password_input.setAttribute('type', 'password');
     answer = '';
   }
-
-  // let createnewEntry = function() {
-  //   if (doorhanger.getAttribute('open') != 'open' || !doorhanger.getAttribute('state', 'entrylist')) {
-  //     return;
-  //   }
-  //   doorhanger.setAttribute('state', 'new-entry');
-  //   password_input.setAttribute('type', 'password');
-  //   enableSave();
-  // }
-
-  // let showPrompt = function() {
-  //   if (doorhanger.getAttribute('open') != 'open') {
-  //     return;
-  //   }
-  //   doorhanger.setAttribute('state', 'generate');
-  //   shuffleArray(questions);
-  //   let question = questions[question_index].text;
-  //   prompt.innerHTML = question;
-  //   answer_input.placeholder = questions[question_index].hint;
-  // }
 
   let generateNewPassword = function(answer) {
     let result = '';
@@ -388,17 +354,6 @@ let runTest = function() {
     }
   }
 
-  let newEntryFilled = function() {
-    if (!use_this.classList.contains('enabled')) {
-      return;
-    }
-    final_password = result_input.innerText;
-    doorhanger.setAttribute('state', 'new-entry');
-    password_input.setAttribute('type', 'password');
-    password_input.value = final_password;
-    enableSave();
-  }
-
   answer_input.onkeyup = function(e) {
     if (answer_input.value != '') {
       document.getElementById('continue').classList.add('enabled');
@@ -434,29 +389,9 @@ let runTest = function() {
   }
 
   go_back.onclick = function() {
-    if (doorhanger.getAttribute('state') == 'new-entry') {
-      doorhanger.setAttribute('state', 'entrylist');
-    } else if (doorhanger.getAttribute('state') == 'generate') {
-      doorhanger.setAttribute('state', 'new-entry');
-      password_input.setAttribute('type', 'password');
-    } else if (doorhanger.getAttribute('state') == 'results') {
+    if (doorhanger.getAttribute('state') == 'results') {
       doorhanger.setAttribute('state', 'generate');
     }
-  }
-
-  document.getElementById('eye').onclick = function(e) {
-    if (password_input.getAttribute('type') == 'password') {
-      password_input.setAttribute('type', 'text');
-    } else {
-      password_input.setAttribute('type', 'password');
-    }
-  }
-
-  document.getElementById('save-entry').onclick = function(e) {
-    if (!e.target.classList.contains('enabled')) {
-      return;
-    }
-    doorhanger.setAttribute('state', 'confirmation');
   }
 
   result_input.oninput = function() {
@@ -468,26 +403,10 @@ let runTest = function() {
     }
   }
 
-  let enableSave = function() {
-    if (name_input.value != ''
-        || address_input.value != ''
-        || username_input.value != ''
-        || password_input.value != '') {
-      document.getElementById('save-entry').classList.add('enabled');
-    } else {
-      document.getElementById('save-entry').classList.remove('enabled');
-    }
-  }
-
-  document.querySelector('.new-entry-inputs').addEventListener('keyup', enableSave);
-
-  dismiss.onclick = toggleDoorHanger;
-  use_this.onclick = newEntryFilled;
+  use_this.onclick = toggleDoorHanger;
   password_switch.onclick = resultToggle;
   passphrase_switch.onclick = resultToggle;
   continue_button.onclick = submitAnswer;
-  // generate.onclick = showPrompt;
-  // new_button.onclick = createnewEntry;
   lb_icon.onclick = toggleDoorHanger;
 }
 
