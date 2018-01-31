@@ -1,6 +1,6 @@
 let questions = [
   {text: "What was your favorite candy when you were ten years old?", hint: "e.g. Runts, Twix"},
-  {text: "When you were a teenager, what was the last name of your favourite actress?", hint: "e.g. Barrymore, Bassett"},
+  {text: "What was the name of your favorite actor when you were a teenager?", hint: "e.g. Barrymore, Bassett"},
   {text: "What is the last name of your favorite teacher growing up?", hint: "e.g. Johnson, Adler "},
   {text: "What is the most dependable tool in your toolbox?", hint: "e.g. pliers, kindness"},
   {text: "What is the last name of your favorite athlete?", hint: "e.g. Sanders, Williams"},
@@ -269,8 +269,13 @@ let runTest = function() {
 
   let toggleDoorHanger = function() {
     doorhanger.setAttribute('open', doorhanger.getAttribute('open') === 'open' ? 'closed' : 'open');
-    doorhanger.setAttribute('state', 'entrylist');
+    doorhanger.setAttribute('state', 'generate');
     document.body.setAttribute('open', doorhanger.getAttribute('open'));
+    
+    shuffleArray(questions);
+    let question = questions[question_index].text;
+    prompt.innerHTML = question;
+    answer_input.placeholder = questions[question_index].hint;
 
     // reset everything incase they begin again
     password_input.value = '';
@@ -284,25 +289,25 @@ let runTest = function() {
     answer = '';
   }
 
-  let createnewEntry = function() {
-    if (doorhanger.getAttribute('open') != 'open' || !doorhanger.getAttribute('state', 'entrylist')) {
-      return;
-    }
-    doorhanger.setAttribute('state', 'new-entry');
-    password_input.setAttribute('type', 'password');
-    enableSave();
-  }
+  // let createnewEntry = function() {
+  //   if (doorhanger.getAttribute('open') != 'open' || !doorhanger.getAttribute('state', 'entrylist')) {
+  //     return;
+  //   }
+  //   doorhanger.setAttribute('state', 'new-entry');
+  //   password_input.setAttribute('type', 'password');
+  //   enableSave();
+  // }
 
-  let showPrompt = function() {
-    if (doorhanger.getAttribute('open') != 'open') {
-      return;
-    }
-    doorhanger.setAttribute('state', 'generate');
-    shuffleArray(questions);
-    let question = questions[question_index].text;
-    prompt.innerHTML = question;
-    answer_input.placeholder = questions[question_index].hint;
-  }
+  // let showPrompt = function() {
+  //   if (doorhanger.getAttribute('open') != 'open') {
+  //     return;
+  //   }
+  //   doorhanger.setAttribute('state', 'generate');
+  //   shuffleArray(questions);
+  //   let question = questions[question_index].text;
+  //   prompt.innerHTML = question;
+  //   answer_input.placeholder = questions[question_index].hint;
+  // }
 
   let generateNewPassword = function(answer) {
     let result = '';
@@ -481,8 +486,8 @@ let runTest = function() {
   password_switch.onclick = resultToggle;
   passphrase_switch.onclick = resultToggle;
   continue_button.onclick = submitAnswer;
-  generate.onclick = showPrompt;
-  new_button.onclick = createnewEntry;
+  // generate.onclick = showPrompt;
+  // new_button.onclick = createnewEntry;
   lb_icon.onclick = toggleDoorHanger;
 }
 

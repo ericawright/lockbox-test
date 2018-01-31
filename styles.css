@@ -172,7 +172,7 @@ body[open=open] #lb-icon {
 }
 
 #doorhanger[state=generate] #cancel::after {
-  content: "Skip this step";
+  content: "Skip";
 }
 
 #doorhanger[state=generate] #cancel {
@@ -258,7 +258,7 @@ body[open=open] #lb-icon {
   color: #2667D8;
   text-decoration: none;
   letter-spacing: .2px;
-  cursor: default;
+  cursor: pointer;
 }
 
 #doorhanger[state=new-entry] #generate span:hover {
@@ -319,6 +319,7 @@ body[open=open] #lb-icon {
 #doorhanger[state=generate] #change-q span {
   color: #2667D8;
   letter-spacing: .3px;
+  cursor: pointer;
 }
 
 #doorhanger[state=generate] #change-q span:hover {
@@ -341,6 +342,8 @@ body[open=open] #lb-icon {
   left: 30px;
   line-height: 1.5em;
   letter-spacing: .2px;
+  height: 55px;
+  padding-top: 9px;
 }
 
 #doorhanger[state=generate] #prompt {
@@ -431,6 +434,7 @@ body[open=open] #lb-icon {
 #doorhanger[state=results][type=passphrase] #password-switch,
 #doorhanger[state=results][type=password] #passphrase-switch {
   color: #2667D8;
+  cursor: pointer;
 }
 
 #doorhanger[state=results] #results #password-switch,
