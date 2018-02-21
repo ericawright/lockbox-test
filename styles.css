@@ -196,10 +196,10 @@ body[open=open] #lb-icon {
 
 #doorhanger[state=generate] #answer {
   position: absolute;
-  width: 251px;
+  width: 256px;
   height: 28px;
   top: 192px;
-  left: 41px;
+  left: 39px;
 }
 
 #doorhanger[state=generate] #instructions {
